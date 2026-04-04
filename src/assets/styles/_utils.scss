@@ -1,0 +1,221 @@
+@mixin generate($prefix, $property) {
+  // List of sizes to generate for each
+
+  $sizes: (4, 8, 12, 16, 24, 32, 48);
+  // Spacing to multiply the sizes by
+  $spacing: 1px;
+  // Loop through all of the sizes(we use @for rather than @each, as we want access to the index)
+  @for $i from 1 through length($sizes) {
+    // Get the size for the current index
+    $size: nth($sizes, $i);
+    // Create the rule
+    .#{$prefix}-#{$size} {
+      #{$property}: $spacing * $size;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.no-select {
+  user-select: none;
+}
+
+.tick {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+  height: 48px;
+
+  &--active {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+.container {
+  max-width: 1340px;
+  padding-inline: 20px;
+  margin-inline: auto;
+}
+
+@include generate('mb', 'margin-bottom');
+@include generate('mt', 'margin-top');
+
+@include generate('g', 'gap');
+
+.link-underline {
+  text-decoration: underline;
+
+  &--accent {
+    color: var(--Main-violet);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.link {
+  color: var(--Main-violet);
+
+  &:hover {
+    color: var(--Main-violet-hover);
+  }
+}
+
+.scroll-visible {
+  overflow: visible;
+}
+
+.scroll-lock {
+  overflow: hidden;
+}
+
+.info-text {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.gray {
+  color: var(--Main-gray);
+}
+
+.red {
+  color: var(--Error-red);
+}
+
+.lightgray {
+  color: var(--Light-gray);
+}
+
+.caption-text {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--Main-gray);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.hide-text-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines-count, 1);
+  line-clamp: var(--lines-count, 1);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.error-text {
+  color: var(--Error-red);
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.relative {
+  position: relative;
+}
+
+.df {
+  display: flex;
+}
+
+.aic {
+  align-items: center;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.fxdc {
+  flex-direction: column;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.grow-0 {
+  flex-grow: 0;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.lh-0 {
+  line-height: 0;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.pretty-scroll {
+  overscroll-behavior: contain;
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #d9d9d9;
+    width: 4px;
+    border-left: 2px solid var(--Light-gray-bg-color);
+    border-right: 2px solid var(--Light-gray-bg-color);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-radius: 4px;
+    background: var(--Light-gray);
+  }
+}
+
+.a-rotate {
+  animation: rotate 1.3s linear infinite;
+}
+
+.cup {
+  cursor: pointer;
+}

@@ -1,0 +1,20 @@
+$sizes: (
+  'lg': 1279.99px,
+  'md': 1023.99px,
+  'sm': 767.99px,
+  'xs': 599.99px,
+);
+
+@mixin media($size, $range: 'max') {
+  @if map-has-key($sizes, $size) {
+    $size-value: map-get($sizes, $size);
+
+    @media only screen and (#{$range}-width: $size-value) {
+      @content;
+    }
+  } @else {
+    @media only screen and (#{$range}-width: $size) {
+      @content;
+    }
+  }
+}
