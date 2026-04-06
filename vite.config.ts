@@ -11,7 +11,6 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler',
         // Option A: Using the modern SASS @use syntax (Recommended)
         // additionalData: `@import "@/assets/styles/main.scss";`,
       },

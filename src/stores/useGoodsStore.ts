@@ -21,7 +21,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       count: 0,
     },
     {
-      title: 'Тофу Классический',
+      title: 'Тофу Классический 1 кг',
       image: 'mallakto/tofu-klassicheskii-1kg.webp',
       link: 'https://mallakto.ru/products/tofu/tofu-klassicheskii-1kg',
       weigth: 1000,
