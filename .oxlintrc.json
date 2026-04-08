@@ -6,5 +6,21 @@
   },
   "categories": {
     "correctness": "error"
+  },
+  "rules": {
+    "eslint/max-len": ["warn", { "code": 100 }],
+    // 2. Перенос объектов (всегда переносить, если есть > 2 свойств)
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": "always",
+        "ExportDeclaration": "always"
+      }
+    ],
+
+    // 3. Перенос элементов массивов
+    "array-element-newline": ["error", "always"]
   }
 }
