@@ -39,7 +39,7 @@
     <div class="details-wrapper">
       <div class="df g-32 jcsb">
         <h4>Белки</h4>
-        <span>{{ description.protain }}</span>
+        <span>{{ description.protein }}</span>
       </div>
       <div class="df g-32 jcsb">
         <h4>Жиры</h4>

@@ -10,7 +10,7 @@ export type Good = {
 
 export type GoodDetails = {
   text: string
-  protain: number
+  protein: number
   fat: number
   carbs: number
   kcal: number
