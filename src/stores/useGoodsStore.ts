@@ -373,7 +373,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       },
     },
     {
-      title: 'Икра красная Vegan',
+      title: 'Икра черная Vegan',
       image: 'hood/caviar_black.webp',
       weigth: 100,
       price: 115,
