@@ -1,5 +1,5 @@
 <template>
-  <BuyPageContent :goods="hoodGoods" />
+  <BuyPageContent v-model:goods="hoodGoods" />
 </template>
 
 <script setup lang="ts">

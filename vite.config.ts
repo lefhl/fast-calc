@@ -11,6 +11,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        additionalData: `@use "@/assets/styles/_mixins.scss" as *;`,
         // Option A: Using the modern SASS @use syntax (Recommended)
         // additionalData: `@import "@/assets/styles/main.scss";`,
       },

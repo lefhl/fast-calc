@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Good } from '@/types/goods'
 
@@ -59,6 +59,34 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 300,
       price: 150,
       count: 0,
+    },
+    {
+      title: 'Сейтан Сейсей',
+      image: 'seysei/saysei_seitan.webp',
+      weigth: 250,
+      price: 180,
+      count: 0,
+      description: {
+        text: 'Глютен (клейковина) пшеничный, 70% белка, соевый изолят, 90% белка, соль, сода, глутамат натрия, сахар, лук, чеснок, ксантанова камедь, каррагинан',
+        protein: 26,
+        fat: 1,
+        carbs: 5.8,
+        kcal: 136,
+      },
+    },
+    {
+      title: 'Сейтан Сейсей копч',
+      image: 'seysei/saysei_seitan_smoked.webp',
+      weigth: 200,
+      price: 180,
+      count: 0,
+      description: {
+        text: 'Свежий и копченый сейтан - одного состава, но второй при горячем копчении теряет часть воды, поэтому концентрация белка в нем немного больше. Глютен (клейковина) пшеничный, 70% белка, соевый изолят, 90% белка, соль, сода, глутамат натрия, сахар, лук, чеснок, ксантанова камедь, каррагинан.',
+        protein: 26,
+        fat: 1,
+        carbs: 5.8,
+        kcal: 136,
+      },
     },
     {
       title: 'Тофу-чечил "Кыр сосичка"',
@@ -388,5 +416,44 @@ export const useGoodsStore = defineStore('goodsStore', () => {
     },
   ])
 
-  return { mallaktoGoods, hoodGoods }
+  const allGoods = computed(() => mallaktoGoods.value.concat(hoodGoods.value))
+
+  const basket = computed(() => {
+    const [mallakto, hood] = [
+      mallaktoGoods.value.filter((el) => el.count),
+      hoodGoods.value.filter((el) => el.count),
+    ]
+    return {
+      hood,
+      mallakto,
+      all: [...mallakto, ...hood],
+    }
+  })
+
+  const totalSum = computed(() => {
+    const amount = basket.value.all.reduce((acc, el) => acc + el.price * el.count, 0)
+    return new Intl.NumberFormat('ru-RU', {
+      style: 'currency',
+      currency: 'RUB',
+    }).format(amount)
+  })
+
+  const totalItemsCount = computed(() => {
+    return basket.value.all.reduce((acc, el) => acc + el.count, 0)
+  })
+
+  const totalWeigth = computed(() => {
+    return basket.value.all.reduce((acc, el) => acc + el.weigth * el.count, 0) / 1000
+  })
+
+  return {
+    mallaktoGoods,
+    hoodGoods,
+    allGoods,
+
+    totalItemsCount,
+    basket,
+    totalSum,
+    totalWeigth,
+  }
 })

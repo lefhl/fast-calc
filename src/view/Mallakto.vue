@@ -1,5 +1,5 @@
 <template>
-  <BuyPageContent :goods="mallaktoGoods" />
+  <BuyPageContent v-model:goods="mallaktoGoods" />
 </template>
 
 <script setup lang="ts">
@@ -8,5 +8,3 @@ import BuyPageContent from './__shared/components/BuyPageContent.vue'
 
 const { mallaktoGoods } = useGoodsStore()
 </script>
-
-<style scoped></style>
