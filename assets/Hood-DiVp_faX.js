@@ -1,1 +1,0 @@
-import{E as e,g as t,n,u as r,w as i,y as a}from"./index-DtZs_jjG.js";import{t as o}from"./BuyPageContent-BbuheFq4.js";var s=t({__name:`Hood`,setup(t){let{hoodGoods:s}=n();return(t,n)=>(a(),r(o,{goods:e(s),"onUpdate:goods":n[0]||=e=>i(s)?s.value=e:null},null,8,[`goods`]))}});export{s as default};
