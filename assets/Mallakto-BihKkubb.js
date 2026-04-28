@@ -1,1 +1,0 @@
-import{S as e,_ as t,l as n,m as r,n as i,w as a}from"./index-BfbB6UKE.js";import{t as o}from"./BuyPageContent-D_LnXlJe.js";var s=r({__name:`Mallakto`,setup(r){let{mallaktoGoods:s}=i();return(r,i)=>(t(),n(o,{goods:a(s),"onUpdate:goods":i[0]||=t=>e(s)?s.value=t:null},null,8,[`goods`]))}});export{s as default};
