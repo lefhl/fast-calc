@@ -6,6 +6,7 @@ export type Good = {
   weigth: number
   price: number
   count: number
+  comission?: number
 }
 
 export type GoodDetails = {

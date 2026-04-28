@@ -7,10 +7,16 @@
       <h4 class="mt-4 mb-4">{{ title }}</h4>
       <div class="mb-8 df g-8">
         <div class="df g-4">
-          <span>Цена</span> - <span>{{ price }}</span>
+          <span>Цена</span> - <span>{{ formatNumberToAmount(price) }}</span>
         </div>
         <div class="df g-4">
           <span>Масса</span> - <span>{{ weigth }} гр</span>
+        </div>
+      </div>
+
+      <div v-if="comission" class="mb-8">
+        <div class="df g-4">
+          <span>Сервисный сбор</span> - <span>{{ formatNumberToAmount(comission) }}</span>
         </div>
       </div>
 
@@ -67,6 +73,7 @@
 
 <script setup lang="ts">
 import type { GoodDetails } from '@/types/goods'
+import { formatNumberToAmount } from '@/view/__shared/utils/amount.utils'
 import { ref } from 'vue'
 
 type Props = {
@@ -75,6 +82,7 @@ type Props = {
   link?: string
   price: number
   weigth: number
+  comission?: number
   description?: GoodDetails
 }
 

@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Good } from '@/types/goods'
+import { formatNumberToAmount } from '@/view/__shared/utils/amount.utils'
 
 export const useGoodsStore = defineStore('goodsStore', () => {
   const mallaktoGoods = ref<Good[]>([
@@ -11,6 +12,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 400,
       price: 100,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Тофу Классический 1 кг',
@@ -19,6 +21,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 1000,
       price: 230,
       count: 0,
+      comission: 25,
     },
     {
       title: 'Тофу Копченый',
@@ -27,6 +30,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 400,
       price: 120,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Тофу Копченый 1кг',
@@ -35,6 +39,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 1000,
       price: 290,
       count: 0,
+      comission: 25,
     },
     {
       title: 'Тофу с чесноком и укропом',
@@ -43,6 +48,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 400,
       price: 110,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Сейтан Пикантный',
@@ -51,6 +57,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 300,
       price: 150,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Сейтан Чикун',
@@ -59,6 +66,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 300,
       price: 150,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Сейтан Сейсей',
@@ -66,6 +74,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 250,
       price: 180,
       count: 0,
+      comission: 15,
       description: {
         text: 'Глютен (клейковина) пшеничный, 70% белка, соевый изолят, 90% белка, соль, сода, глутамат натрия, сахар, лук, чеснок, ксантанова камедь, каррагинан',
         protein: 26,
@@ -80,6 +89,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 200,
       price: 180,
       count: 0,
+      comission: 15,
       description: {
         text: 'Свежий и копченый сейтан - одного состава, но второй при горячем копчении теряет часть воды, поэтому концентрация белка в нем немного больше. Глютен (клейковина) пшеничный, 70% белка, соевый изолят, 90% белка, соль, сода, глутамат натрия, сахар, лук, чеснок, ксантанова камедь, каррагинан.',
         protein: 26,
@@ -95,6 +105,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 150,
       price: 190,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Вегшпроты',
@@ -103,6 +114,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 200,
       price: 190,
       count: 0,
+      comission: 15,
     },
 
     {
@@ -112,6 +124,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 200,
       price: 190,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Некрабовые палочки',
@@ -120,6 +133,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 150,
       price: 190,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Глазированный сырок с кокосовой стружкой',
@@ -128,6 +142,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 90,
       price: 120,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Глазированный сырок шоколадный с вишней',
@@ -136,6 +151,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 90,
       price: 120,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Глазированный сырок с арахисовой пастой',
@@ -144,6 +160,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 90,
       price: 120,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Наггетсы из тофу',
@@ -152,6 +169,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 380,
       price: 200,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Темпе соевый классический',
@@ -160,15 +178,8 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 250,
       price: 300,
       count: 0,
+      comission: 15,
     },
-    // {
-    //   title: 'Темпе соевый классический',
-    //   image: 'mallakto/tempe-kopchyonyj.png',
-    //   link: 'https://fungfung.ru/',
-    //   weigth: 250,
-    //   price: 375,
-    //   count: 0,
-    // },
     {
       title: 'Темпе соевый копчёный',
       image: 'mallakto/tempe-kopchyonyj.png',
@@ -176,6 +187,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 250,
       price: 375,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Темпе нутовый классический',
@@ -184,6 +196,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 250,
       price: 350,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Темпе нутовый копчёный',
@@ -192,6 +205,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 250,
       price: 400,
       count: 0,
+      comission: 15,
     },
     {
       title: 'Темпе гречневый классический',
@@ -200,6 +214,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       weigth: 250,
       price: 325,
       count: 0,
+      comission: 15,
     },
   ])
 
@@ -431,11 +446,7 @@ export const useGoodsStore = defineStore('goodsStore', () => {
   })
 
   const totalSum = computed(() => {
-    const amount = basket.value.all.reduce((acc, el) => acc + el.price * el.count, 0)
-    return new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: 'RUB',
-    }).format(amount)
+    return basket.value.all.reduce((acc, el) => acc + el.price * el.count, 0)
   })
 
   const totalItemsCount = computed(() => {
@@ -444,6 +455,10 @@ export const useGoodsStore = defineStore('goodsStore', () => {
 
   const totalWeigth = computed(() => {
     return basket.value.all.reduce((acc, el) => acc + el.weigth * el.count, 0) / 1000
+  })
+
+  const totalComission = computed(() => {
+    return basket.value.all.reduce((acc, el) => acc + (el?.comission ?? 0) * el.count, 0)
   })
 
   return {
@@ -455,5 +470,6 @@ export const useGoodsStore = defineStore('goodsStore', () => {
     basket,
     totalSum,
     totalWeigth,
+    totalComission,
   }
 })

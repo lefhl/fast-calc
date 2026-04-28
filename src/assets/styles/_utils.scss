@@ -52,6 +52,10 @@
 @include generate('mb', 'margin-bottom');
 @include generate('mt', 'margin-top');
 
+.ml-0 {
+  margin-left: 0 !important;
+}
+
 @include generate('g', 'gap');
 
 .link-underline {
@@ -217,5 +221,23 @@
 }
 
 .cup {
+  cursor: pointer;
+}
+
+.aifs {
+  align-items: flex-start;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+button {
+  background-color: unset;
+  border: unset;
   cursor: pointer;
 }
