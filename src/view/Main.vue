@@ -94,20 +94,20 @@
       </span>
     </p>
 
-    <h4 class="mt-24 mb-16">Актуальные таблицы по закупкам (от 28 апреля)</h4>
+    <h4 class="mt-24 mb-16">Актуальные таблицы по закупкам (от 26 мая)</h4>
     <div class="df fxdc aifs">
       <a
         class="inline-block"
-        href="https://docs.google.com/spreadsheets/d/1fQlp_JDU9RW2gcLsnjGAdox0ufjq48baKxaSRMSnPBs/edit?usp=sharing"
+        href="https://docs.google.com/spreadsheets/d/1W0aX7gGhklK9io0ymGHe0utwf2zIAeMZKJeBeKm2FBQ/edit?gid=0#gid=0"
         target="_blank"
         >Mallakto + Сэйсей</a
       >
-      <a
+      <!-- <a
         class="inline-block mt-16"
         href="https://docs.google.com/spreadsheets/d/1Jznn_ZX2jSMR3ihelY_4ueD39qZbl6EC-6jNOlwse54/edit?usp=sharing"
         target="_blank"
         >Hood</a
-      >
+      > -->
     </div>
   </div>
 </template>
