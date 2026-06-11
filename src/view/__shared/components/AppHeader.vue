@@ -41,14 +41,14 @@ const moreoverHundredVal = computed(() => {
 })
 
 const links = [
-  {
-    route: 'Mallakto',
-    title: 'Mallakto (Сэйсей)',
-  },
   // {
-  //   route: 'Hood',
-  //   title: 'Hood',
+  //   route: 'Mallakto',
+  //   title: 'Mallakto (Сэйсей)',
   // },
+  {
+    route: 'Hood',
+    title: 'Hood',
+  },
 ]
 </script>
 
