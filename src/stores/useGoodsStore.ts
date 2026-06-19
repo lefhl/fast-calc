@@ -1,7 +1,6 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Good } from '@/types/goods'
-import { formatNumberToAmount } from '@/view/__shared/utils/amount.utils'
 
 export const useGoodsStore = defineStore('goodsStore', () => {
   const mallaktoGoods = ref<Good[]>([
@@ -161,15 +160,15 @@ export const useGoodsStore = defineStore('goodsStore', () => {
       count: 0,
       comission: 15,
     },
-    {
-      title: 'Наггетсы из тофу',
-      image: 'mallakto/naggetsy.webp',
-      link: 'https://mallakto.ru/products/produkty-iz-tofu/naggetsy-iz-tofu',
-      weigth: 380,
-      price: 200,
-      count: 0,
-      comission: 15,
-    },
+    // {
+    //   title: 'Наггетсы из тофу',
+    //   image: 'mallakto/naggetsy.webp',
+    //   link: 'https://mallakto.ru/products/produkty-iz-tofu/naggetsy-iz-tofu',
+    //   weigth: 380,
+    //   price: 200,
+    //   count: 0,
+    //   comission: 15,
+    // },
     {
       title: 'Темпе соевый классический',
       image: 'mallakto/tempe-klassicheskij.png',
