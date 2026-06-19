@@ -1,0 +1,1 @@
+var e=e=>new Intl.NumberFormat(`ru-RU`,{style:`currency`,currency:`RUB`,maximumFractionDigits:0}).format(e);export{e as t};
