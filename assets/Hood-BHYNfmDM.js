@@ -1,0 +1,1 @@
+import{C as e,T as t,h as n,l as r,n as i,v as a}from"./index-C2dOz8l8.js";import{t as o}from"./BuyPageContent-D8nbRJXA.js";var s=n({__name:`Hood`,setup(n){let{hoodGoods:s}=i();return(n,i)=>(a(),r(o,{goods:t(s),"onUpdate:goods":i[0]||=t=>e(s)?s.value=t:null},null,8,[`goods`]))}});export{s as default};
