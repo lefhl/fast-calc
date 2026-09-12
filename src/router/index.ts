@@ -19,7 +19,7 @@ const router = createRouter({
       component: () => import('@/view/Hood.vue'),
     },
     {
-      name: 'FAQ',
+      name: 'Faq',
       path: '/faq',
       component: () => import('@/view/FAQ.vue'),
     },

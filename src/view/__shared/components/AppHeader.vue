@@ -50,7 +50,7 @@ const links = [
     title: 'Hood',
   },
   {
-    route: 'FAQ',
+    route: 'Faq',
     title: 'FAQ',
   },
 ]
