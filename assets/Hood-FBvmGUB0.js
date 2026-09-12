@@ -1,1 +1,0 @@
-import{b as e,bt as t,f as n,st as r,z as i}from"./_plugin-vue_export-helper-2QT74eyY.js";import{t as a}from"./index-CYgpswYV.js";import{t as o}from"./BuyPageContent-B4O4ElAE.js";var s=e({__name:`Hood`,setup(e){let{hoodGoods:s}=a();return(e,a)=>(i(),n(o,{goods:t(s),"onUpdate:goods":a[0]||=e=>r(s)?s.value=e:null},null,8,[`goods`]))}});export{s as default};
