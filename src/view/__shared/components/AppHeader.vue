@@ -45,10 +45,14 @@ const links = [
     route: 'Mallakto',
     title: 'Mallakto (Сэйсей)',
   },
-  // {
-  //   route: 'Hood',
-  //   title: 'Hood',
-  // },
+  {
+    route: 'Hood',
+    title: 'Hood',
+  },
+  {
+    route: 'FAQ',
+    title: 'FAQ',
+  },
 ]
 </script>
 

@@ -8,3 +8,11 @@ export const FAIL_COPY_MESSAGE = {
   message: 'Ошибка при копировании! Попробуйте скопировать вручную',
   duration: 3000,
 }
+
+export function* uniqSimpleIdGenerator(start = 0) {
+  let current = start
+  while (true) {
+    yield current
+    current += 1
+  }
+}

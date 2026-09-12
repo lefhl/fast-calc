@@ -8,8 +8,9 @@
     "correctness": "error"
   },
   "rules": {
-    "eslint/max-len": ["warn", { "code": 100 }],
-    // 2. Перенос объектов (всегда переносить, если есть > 2 свойств)
+    // Добавляем ignoreStrings, чтобы длинные части строк не вызывали варнингов
+    "eslint/max-len": ["warn", { "code": 100, "ignoreStrings": true }],
+
     "object-curly-newline": [
       "error",
       {
@@ -19,8 +20,6 @@
         "ExportDeclaration": "always"
       }
     ],
-
-    // 3. Перенос элементов массивов
     "array-element-newline": ["error", "always"]
   }
 }
