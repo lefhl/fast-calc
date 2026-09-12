@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-collapse v-model="activeNames" @change="handleChange">
+    <el-collapse v-model="activeNames">
       <!-- <el-collapse-item
         v-for="item in items"
         :title="item.title"
