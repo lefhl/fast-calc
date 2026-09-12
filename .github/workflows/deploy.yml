@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Триггер срабатывает при любом push в ветку master
+
+# Разрешаем скрипту создавать и обновлять деплои
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Скачиваем актуальный код из репозитория
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Устанавливаем Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3. Устанавливаем зависимости проекта
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4. Собираем проект (Vite создаст папку dist)
+      - name: Build Project
+        run: npm run build
+
+      # 5. Автоматически создаем .nojekyll прямо в папке dist перед деплоем
+      - name: Bypass Jekyll (Fix 404 for Vite assets)
+        run: touch dist/.nojekyll
+
+      # 6. Публикуем содержимое папки dist в ветку gh-pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Какую папку загружать
+          branch: gh-pages # В какую ветку загружать
+          clean: true # Удалять ли старые файлы в ветке gh-pages
