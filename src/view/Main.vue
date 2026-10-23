@@ -98,13 +98,13 @@
     <div class="df fxdc aifs">
       <a
         class="inline-block"
-        href="https://docs.google.com/spreadsheets/d/1XBaCZ7ZQPcGsEVuPSwWp3PhhzMcxa-H81UVv_MUOi0s/edit?usp=sharing"
+        href="https://docs.google.com/spreadsheets/d/1gUVnLq0BLSVooeqe-lBI5Cs8oejhneMnPwaid6UUJ_M/edit?gid=0#gid=0"
         target="_blank"
         >Mallakto + Сэйсей</a
       >
       <a
         class="inline-block mt-16"
-        href="https://docs.google.com/spreadsheets/d/1VMlGF_sI_2isJlZ8KYp8bKd83cp-kKYVPpWAxx8dAdI/edit?usp=sharing"
+        href="https://docs.google.com/spreadsheets/d/1e1CCObJ69hfItxYc_HvD0A-EXytB8xq1SrB-_7tGZI8/edit?gid=0#gid=0"
         target="_blank"
         >Hood</a
       >
