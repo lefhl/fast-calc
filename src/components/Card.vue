@@ -119,6 +119,10 @@ const isDialogOpen = ref(false)
   flex-grow: 1;
 }
 
+.footer :deep(.el-input-number) {
+  --el-color-primary: #27594b;
+}
+
 .footer {
   display: flex;
   gap: 8px;
