@@ -132,6 +132,7 @@ const isDialogOpen = ref(false)
 
 .quantity-control {
   position: relative;
+  padding-inline-end: 29px;
 }
 
 @media (max-width: 600px) {
@@ -160,12 +161,11 @@ const isDialogOpen = ref(false)
 
 .santa-hat {
   position: absolute;
-  top: -10px;
-  right: -7px;
-  z-index: 2;
+  top: 50%;
+  inset-inline-end: 1px;
   width: 23px;
   height: 16px;
-  transform: rotate(16deg);
+  transform: translateY(-50%) rotate(16deg);
   pointer-events: none;
   background: radial-gradient(circle at 20px 8px, #fffaf1 2px, #c7d4cd 2.5px, transparent 3px);
 
