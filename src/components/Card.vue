@@ -23,7 +23,14 @@
     </div>
   </article>
 
-  <el-dialog v-if="description" v-model="isDialogOpen" title="" width="450" align-center>
+  <el-dialog
+    v-if="description"
+    v-model="isDialogOpen"
+    class="winter-product-dialog"
+    :title="title"
+    width="min(calc(100% - 24px), 520px)"
+    align-center
+  >
     <img class="dialog-image" :src="`images/${image}`" alt="" />
     <p class="d-modal-text">
       {{ description.text }}
@@ -48,13 +55,11 @@
       </div>
     </div>
 
-    <el-button class="mt-16" type="primary" @click="isDialogOpen = false"> Закрыть </el-button>
-    <!-- <template #footer>
-      <div class="dialog-footer">
-        <el-button @click="isDialogOpen = false">Cancel</el-button>
-        <el-button type="primary" @click="isDialogOpen = false"> Confirm </el-button>
-      </div>
-    </template> -->
+    <template #footer>
+      <el-button class="winter-dialog-close" type="primary" @click="isDialogOpen = false">
+        Закрыть
+      </el-button>
+    </template>
   </el-dialog>
 </template>
 
@@ -193,20 +198,100 @@ const isDialogOpen = ref(false)
 
 .dialog-image {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  height: clamp(128px, 38dvh, 280px);
+  object-fit: contain;
+  border-radius: 8px;
+  background: #edf4ef;
   margin-bottom: 16px;
 }
 
 .details-wrapper {
-  // max-width: 150px;
-  margin-top: 12px;
-  gap: 0 48px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #edf4ef;
+  gap: 6px 14px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
+.details-wrapper > div {
+  gap: 4px 8px;
+  flex-wrap: wrap;
+}
+
 .d-modal-text {
+  color: #385449;
   font-size: 14px;
+  overflow-wrap: anywhere;
+}
+</style>
+
+<style lang="scss">
+.el-dialog.winter-product-dialog {
+  --el-dialog-bg-color: #fbfdfb;
+  --el-dialog-border-radius: 14px;
+  --el-dialog-padding-primary: 20px;
+  --el-color-primary: #27594b;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 24px);
+  border: 1px solid #a8c0b0;
+  color: #173c34;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid #b9ccc0;
+    border-radius: 11px;
+    background:
+      radial-gradient(circle at 6px 1px, #cb904c 1.5px, transparent 2px) 3px 0 / 21px 4px repeat-x,
+      radial-gradient(circle at 14px 3px, #668b75 1.5px, transparent 2px) 3px 100% / 21px 4px
+        repeat-x,
+      radial-gradient(circle at 1px 6px, #668b75 1.5px, transparent 2px) 0 3px / 4px 21px repeat-y,
+      radial-gradient(circle at 3px 14px, #cb904c 1.5px, transparent 2px) 100% 3px / 4px 21px
+        repeat-y;
+    pointer-events: none;
+  }
+
+  .el-dialog__title,
+  .el-dialog__close {
+    color: #173c34;
+  }
+
+  .el-dialog__title {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .el-dialog__body {
+    min-height: 0;
+    overflow-y: auto;
+    color: #173c34;
+  }
+
+  .el-dialog__footer {
+    flex-shrink: 0;
+  }
+
+  .winter-dialog-close {
+    --el-button-bg-color: #27594b;
+    --el-button-border-color: #27594b;
+    --el-button-hover-bg-color: #356c5d;
+    --el-button-hover-border-color: #356c5d;
+    --el-button-active-bg-color: #173c34;
+    --el-button-active-border-color: #173c34;
+  }
+
+  :is(.el-dialog__headerbtn, .winter-dialog-close):focus-visible {
+    outline: 2px solid #527a67;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    --el-dialog-padding-primary: 16px;
+  }
 }
 </style>
