@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-collapse v-model="activeNames">
+    <el-collapse v-model="activeNames" class="faq">
       <!-- <el-collapse-item
         v-for="item in items"
         :title="item.title"
@@ -68,6 +68,31 @@ const activeNames = ref([]) // По умолчанию открыта перва
 </script>
 
 <style scoped>
+.faq :deep(.el-collapse-item__header),
+.faq :deep(.el-collapse-item__content) {
+  padding-inline: clamp(12px, 2.5vw, 24px);
+}
+
+.faq :deep(.el-collapse-item__header) {
+  height: auto;
+  min-height: var(--el-collapse-header-height, 48px);
+  padding-block: 10px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.faq :deep(.el-collapse-item__arrow) {
+  flex-shrink: 0;
+}
+
+.faq ol {
+  list-style: none;
+}
+
+.faq p + p {
+  margin-top: 6px;
+}
+
 .local-accent-link {
   /* Всегда используем главный акцентный цвет Element Plus */
   color: var(--el-color-primary);

@@ -1,6 +1,5 @@
 <template>
   <header class="header">
-    <router-link class="brand" :to="{ name: 'Main' }">Соевый проспект</router-link>
     <nav class="navigation" aria-label="Разделы закупки">
       <router-link :to="{ name: 'Mallakto' }">Mallakto</router-link>
       <router-link :to="{ name: 'Hood' }">HOOD</router-link>
@@ -21,18 +20,7 @@ const { totalItemsCount } = storeToRefs(useGoodsStore())
 
 <style lang="scss" scoped>
 .header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 24px;
   margin-bottom: 20px;
-}
-
-.brand {
-  color: #173c34;
-  font-size: clamp(21px, 3vw, 28px);
-  font-weight: 700;
 }
 
 .navigation {
