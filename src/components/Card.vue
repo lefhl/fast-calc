@@ -2,6 +2,7 @@
   <article class="card" :class="{ 'card--selected': (count ?? 0) > 0 }">
     <div class="img-wrapper">
       <img :src="`images/${image}`" alt="" />
+      <span class="photo-snowflake" aria-hidden="true">❄</span>
     </div>
     <div class="content">
       <h4 class="mt-4 mb-4">{{ title }}</h4>
@@ -14,7 +15,9 @@
       </p>
 
       <footer class="footer">
-        <el-input-number min="0" step="1" step-strictly max="100" v-model="count"></el-input-number>
+        <div class="quantity-control">
+          <el-input-number v-model="count" :min="0" :step="1" step-strictly :max="100" />
+        </div>
         <a v-if="link" class="card-link" :href="link" target="_blank"> На сайт </a>
         <button v-if="description" type="button" class="card-link" @click="isDialogOpen = true">
           Детали
@@ -120,6 +123,52 @@ const isDialogOpen = ref(false)
 .card--selected {
   --card-border: #527a67;
   --card-input-bg: #eaf3ee;
+}
+
+.photo-snowflake {
+  display: none;
+}
+
+.quantity-control {
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .img-wrapper {
+    position: relative;
+    padding: 8px 24px;
+    border-radius: 8px;
+    background: #edf4ef;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .photo-snowflake {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    display: block;
+    color: #668b75;
+    font-size: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .card--selected .quantity-control::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #875b30;
+    border-radius: 50%;
+    background: #e9b96e;
+    box-shadow: 0 0 0 2px #fff;
+    pointer-events: none;
+  }
 }
 
 .card-price {

@@ -27,17 +27,5 @@ const goods = defineModel<Good[]>('goods', { required: true })
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 24px;
   }
-  :deep() {
-    .img-wrapper {
-      img {
-        width: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .card {
-      align-items: center;
-    }
-  }
 }
 </style>

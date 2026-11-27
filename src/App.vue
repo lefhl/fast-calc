@@ -3,8 +3,10 @@
     <div class="snow-background" aria-hidden="true">
       <span v-for="(position, index) in snowflakes" :key="index" :style="position">❄</span>
     </div>
-    <AppHeader />
-    <div class="winter-lights" aria-hidden="true"></div>
+    <div class="winter-navigation" :class="{ 'winter-navigation--catalog': isCatalog }">
+      <AppHeader />
+      <div class="winter-lights" aria-hidden="true"></div>
+    </div>
     <div v-if="isCatalog" class="winter-announcement">
       <div class="winter-banner" :style="bannerStyle" aria-hidden="true">
         <span class="tofu-ornament"></span>
@@ -146,6 +148,15 @@ const bannerStyle = {
 @media (max-width: 600px) {
   .app-shell {
     padding-inline: 16px;
+  }
+
+  .winter-navigation--catalog {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding-top: 6px;
+    background: #f4f7f5;
+    box-shadow: 0 6px #f4f7f5;
   }
 
   .winter-deadline {
