@@ -5,12 +5,14 @@
     </div>
     <AppHeader />
     <div class="winter-lights" aria-hidden="true"></div>
-    <div v-if="isCatalog" class="winter-banner" :style="bannerStyle">
-      <p class="winter-deadline">Приём заказов до 12:00 понедельника</p>
-      <span class="tofu-ornament" aria-hidden="true"></span>
+    <div :class="{ 'catalog-layout': isCatalog }">
+      <div v-if="isCatalog" class="winter-banner" :style="bannerStyle">
+        <p class="winter-deadline">Приём заказов до 12:00 понедельника</p>
+        <span class="tofu-ornament" aria-hidden="true"></span>
+      </div>
+      <router-view />
     </div>
 
-    <router-view />
     <router-link v-if="showMobileBasket" class="mobile-basket" :to="{ name: 'Main' }">
       <span>Корзина · {{ totalItemsCount }} шт.</span>
       <strong>{{ formatNumberToAmount(totalSum + totalComission) }}</strong>
@@ -139,6 +141,18 @@ const bannerStyle = {
 @media (max-width: 600px) {
   .app-shell {
     padding-inline: 16px;
+  }
+
+  .catalog-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 12px;
+  }
+
+  .winter-banner {
+    order: 1;
+    margin-bottom: 0;
   }
 
   .app-shell--basket {
