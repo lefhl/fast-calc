@@ -177,6 +177,17 @@ const copyValyeInside = async (e: Event) => {
 <style lang="scss" scoped>
 .basket-page {
   --el-color-primary: #27594b;
+  --el-color-primary-light-3: #356c5d;
+  --el-color-primary-light-5: #668f80;
+  --el-color-primary-light-7: #a0bbae;
+  --el-color-primary-light-8: #c0d3c9;
+  --el-color-primary-light-9: #e1eee7;
+  --el-color-primary-dark-2: #173c34;
+
+  :deep(.el-button:focus-visible) {
+    outline: 2px solid var(--el-color-primary);
+    outline-offset: 2px;
+  }
 
   h1 {
     margin-bottom: 20px;

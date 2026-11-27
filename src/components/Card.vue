@@ -2,6 +2,7 @@
   <article class="card" :class="{ 'card--selected': (count ?? 0) > 0 }">
     <div class="img-wrapper">
       <img :src="`images/${image}`" alt="" />
+      <span class="photo-snowflake" aria-hidden="true">❄</span>
     </div>
     <div class="content">
       <h4 class="mt-4 mb-4">{{ title }}</h4>
@@ -14,7 +15,10 @@
       </p>
 
       <footer class="footer">
-        <el-input-number min="0" step="1" step-strictly max="100" v-model="count"></el-input-number>
+        <div class="quantity-control">
+          <el-input-number v-model="count" :min="0" :step="1" step-strictly :max="100" />
+          <span v-if="(count ?? 0) > 0" class="santa-hat" aria-hidden="true"></span>
+        </div>
         <a v-if="link" class="card-link" :href="link" target="_blank"> На сайт </a>
         <button v-if="description" type="button" class="card-link" @click="isDialogOpen = true">
           Детали
@@ -122,6 +126,71 @@ const isDialogOpen = ref(false)
   --card-input-bg: #eaf3ee;
 }
 
+.photo-snowflake {
+  display: none;
+}
+
+.quantity-control {
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .img-wrapper {
+    position: relative;
+    padding: 8px 24px;
+    border-radius: 8px;
+    background: #edf4ef;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .photo-snowflake {
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    display: block;
+    color: #668b75;
+    font-size: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+}
+
+.santa-hat {
+  position: absolute;
+  top: -13px;
+  inset-inline-end: -14px;
+  z-index: 2;
+  width: 23px;
+  height: 16px;
+  transform: rotate(12deg);
+  transform-origin: 9px 13px;
+  pointer-events: none;
+  background: radial-gradient(circle at 20px 8px, #fffaf1 2px, #c7d4cd 2.5px, transparent 3px);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    inset: 0 3px 3px 2px;
+    background: #ac3944;
+    clip-path: polygon(0 100%, 21% 39%, 48% 6%, 81% 21%, 100% 67%, 70% 47%, 83% 100%);
+  }
+
+  &::after {
+    inset: auto 5px 0 0;
+    height: 5px;
+    border: 1px solid #c7d4cd;
+    border-radius: 5px;
+    background: #fffaf1;
+  }
+}
+
 .card-price {
   display: flex;
   flex-wrap: wrap;
@@ -192,8 +261,8 @@ const isDialogOpen = ref(false)
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
-  // flex-grow: 1;
   margin-top: auto;
+  padding-top: 14px;
 }
 
 .dialog-image {
