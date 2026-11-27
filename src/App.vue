@@ -1,22 +1,36 @@
 <template>
-  <div class="container app-shell">
+  <div class="container app-shell" :class="{ 'app-shell--basket': showMobileBasket }">
     <AppHeader />
     <div class="winter-lights" aria-hidden="true"></div>
     <div
-      v-if="$route.name === 'Mallakto' || $route.name === 'Hood'"
+      v-if="isCatalog"
       class="winter-banner"
       :style="bannerStyle"
-      aria-hidden="true"
     >
-      <span class="tofu-ornament"></span>
+      <p class="winter-deadline">Приём заказов до 12:00 понедельника</p>
+      <span class="tofu-ornament" aria-hidden="true"></span>
     </div>
 
-    <router-view></router-view>
+    <router-view />
+    <router-link v-if="showMobileBasket" class="mobile-basket" :to="{ name: 'Main' }">
+      <span>Корзина · {{ totalItemsCount }} шт.</span>
+      <strong>{{ formatNumberToAmount(totalSum + totalComission) }}</strong>
+    </router-link>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useGoodsStore } from '@/stores/useGoodsStore'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { formatNumberToAmount } from './view/__shared/utils/amount.utils'
 import AppHeader from './view/__shared/components/AppHeader.vue'
+
+const route = useRoute()
+const { totalItemsCount, totalSum, totalComission } = storeToRefs(useGoodsStore())
+const isCatalog = computed(() => route.name === 'Mallakto' || route.name === 'Hood')
+const showMobileBasket = computed(() => isCatalog.value && totalItemsCount.value > 0)
 
 const bannerStyle = {
   backgroundImage: `url(${import.meta.env.BASE_URL}images/winter-canal.webp)`,
@@ -41,12 +55,29 @@ const bannerStyle = {
 }
 
 .winter-banner {
+  display: flex;
+  align-items: center;
+  padding-inline: clamp(12px, 3vw, 32px);
   position: relative;
   overflow: hidden;
   height: clamp(96px, 15vw, 160px);
   margin-bottom: 24px;
   border-radius: 12px;
   background: #173c34 center right / cover no-repeat;
+}
+
+.winter-deadline {
+  max-width: calc(100% - 48px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #173c34;
+  color: #fff;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 600;
+}
+
+.mobile-basket {
+  display: none;
 }
 
 .tofu-ornament {
@@ -86,6 +117,30 @@ const bannerStyle = {
 @media (max-width: 600px) {
   .app-shell {
     padding-inline: 16px;
+  }
+
+  .app-shell--basket {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-basket {
+    position: fixed;
+    inset: auto 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 48px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #173c34;
+    color: #fff;
+    font-size: 14px;
+
+    strong {
+      white-space: nowrap;
+    }
   }
 }
 </style>

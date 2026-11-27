@@ -1,24 +1,17 @@
 <template>
-  <article class="card">
+  <article class="card" :class="{ 'card--selected': (count ?? 0) > 0 }">
     <div class="img-wrapper">
       <img :src="`images/${image}`" alt="" />
     </div>
     <div class="content">
       <h4 class="mt-4 mb-4">{{ title }}</h4>
-      <div class="mb-8 df g-8">
-        <div class="df g-4">
-          <span>Цена</span> - <span>{{ formatNumberToAmount(price) }}</span>
-        </div>
-        <div class="df g-4">
-          <span>Масса</span> - <span>{{ weigth }} гр</span>
-        </div>
+      <div class="card-price">
+        <strong>{{ formatNumberToAmount(price + (comission ?? 0)) }}</strong>
+        <span>за {{ weigth }} г</span>
       </div>
-
-      <div v-if="comission" class="mb-8">
-        <div class="df g-4">
-          <span>Сервисный сбор</span> - <span>{{ formatNumberToAmount(comission) }}</span>
-        </div>
-      </div>
+      <p v-if="comission" class="card-price-details">
+        {{ formatNumberToAmount(price) }} + {{ formatNumberToAmount(comission) }} сервисный сбор
+      </p>
 
       <footer class="footer">
         <el-input-number min="0" step="1" step-strictly max="100" v-model="count"></el-input-number>
@@ -117,6 +110,36 @@ const isDialogOpen = ref(false)
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.card--selected {
+  border-color: #527a67;
+}
+
+.card--selected :deep(.el-input__wrapper) {
+  background: #eaf3ee;
+}
+
+.card-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin-block: 4px 8px;
+
+  strong {
+    font-size: 20px;
+  }
+
+  span {
+    font-size: 13px;
+  }
+}
+
+.card-price-details {
+  margin-bottom: 10px;
+  color: #4e6258;
+  font-size: 12px;
 }
 
 .footer :deep(.el-input-number) {
