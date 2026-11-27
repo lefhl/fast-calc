@@ -15,16 +15,10 @@
 
       <footer class="footer">
         <el-input-number min="0" step="1" step-strictly max="100" v-model="count"></el-input-number>
-        <a
-          v-if="link"
-          class="el-button el-button--primary is-link"
-          link
-          :href="link"
-          target="_blank"
-        >
-          На сайт
-        </a>
-        <el-button v-if="description" plain @click="isDialogOpen = true"> Детали </el-button>
+        <a v-if="link" class="card-link" :href="link" target="_blank"> На сайт </a>
+        <button v-if="description" type="button" class="card-link" @click="isDialogOpen = true">
+          Детали
+        </button>
       </footer>
     </div>
   </article>
@@ -98,8 +92,14 @@ const isDialogOpen = ref(false)
 }
 
 .card {
+  --card-accent: #27594b;
+  --card-border: #ccdcd2;
+  --card-control-bg: #f0f6f2;
+  --card-control-hover: #dcebe2;
+  --card-input-bg: #fff;
+
   padding: 14px;
-  border: 1px solid #dce7e0;
+  border: 1px solid var(--card-border);
   border-radius: 12px;
   background: #fff;
   display: flex;
@@ -113,11 +113,8 @@ const isDialogOpen = ref(false)
 }
 
 .card--selected {
-  border-color: #527a67;
-}
-
-.card--selected :deep(.el-input__wrapper) {
-  background: #eaf3ee;
+  --card-border: #527a67;
+  --card-input-bg: #eaf3ee;
 }
 
 .card-price {
@@ -143,7 +140,46 @@ const isDialogOpen = ref(false)
 }
 
 .footer :deep(.el-input-number) {
-  --el-color-primary: #27594b;
+  --el-color-primary: var(--card-accent);
+  --el-input-focus-border-color: var(--card-accent);
+  --el-border-color: var(--card-border);
+  --el-disabled-border-color: var(--card-border);
+  --el-disabled-text-color: #70837a;
+  --el-fill-color-light: var(--card-control-bg);
+  --el-text-color-regular: #173c34;
+
+  .el-input__wrapper {
+    --el-input-bg-color: var(--card-input-bg);
+  }
+
+  :is(.el-input-number__decrease, .el-input-number__increase):not(.is-disabled):hover {
+    background: var(--card-control-hover);
+  }
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--card-accent);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--card-control-bg);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--card-accent);
+    outline-offset: 2px;
+  }
 }
 
 .footer {
