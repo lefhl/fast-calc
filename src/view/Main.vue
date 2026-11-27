@@ -94,17 +94,17 @@
       </span>
     </p>
 
-    <h4 class="mt-24 mb-16">Актуальные таблицы по закупкам (от 7 августа)</h4>
+    <h4 class="mt-24 mb-16">Актуальные таблицы по закупкам (27.11–06.12.2026)</h4>
     <div class="df fxdc aifs">
       <a
         class="inline-block"
-        href="https://docs.google.com/spreadsheets/d/1gUVnLq0BLSVooeqe-lBI5Cs8oejhneMnPwaid6UUJ_M/edit?gid=0#gid=0"
+        href="https://docs.google.com/spreadsheets/d/12M4B3AHwuW8uREqw10xPLhiTZMRYQG67G9c3x1HJrBo/edit?gid=0#gid=0"
         target="_blank"
         >Mallakto + Сэйсей</a
       >
       <a
         class="inline-block mt-16"
-        href="https://docs.google.com/spreadsheets/d/1e1CCObJ69hfItxYc_HvD0A-EXytB8xq1SrB-_7tGZI8/edit?gid=0#gid=0"
+        href="https://docs.google.com/spreadsheets/d/1S5eNAKmol73G1Czca0FlN7JQIRcng-ZQyWPCdPw2RKk/edit?gid=0#gid=0"
         target="_blank"
         >Hood</a
       >
