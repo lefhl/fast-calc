@@ -17,6 +17,7 @@
       <footer class="footer">
         <div class="quantity-control">
           <el-input-number v-model="count" :min="0" :step="1" step-strictly :max="100" />
+          <span v-if="(count ?? 0) > 0" class="santa-hat" aria-hidden="true"></span>
         </div>
         <a v-if="link" class="card-link" :href="link" target="_blank"> На сайт </a>
         <button v-if="description" type="button" class="card-link" @click="isDialogOpen = true">
@@ -155,19 +156,37 @@ const isDialogOpen = ref(false)
     line-height: 1;
     pointer-events: none;
   }
+}
 
-  .card--selected .quantity-control::after {
+.santa-hat {
+  position: absolute;
+  top: -10px;
+  right: -7px;
+  z-index: 2;
+  width: 23px;
+  height: 16px;
+  transform: rotate(16deg);
+  pointer-events: none;
+  background: radial-gradient(circle at 20px 8px, #fffaf1 2px, #c7d4cd 2.5px, transparent 3px);
+
+  &::before,
+  &::after {
     content: '';
     position: absolute;
-    top: -4px;
-    right: -4px;
-    width: 9px;
-    height: 9px;
-    border: 1px solid #875b30;
-    border-radius: 50%;
-    background: #e9b96e;
-    box-shadow: 0 0 0 2px #fff;
-    pointer-events: none;
+  }
+
+  &::before {
+    inset: 0 3px 3px 2px;
+    background: #ac3944;
+    clip-path: polygon(0 100%, 21% 39%, 48% 6%, 81% 21%, 100% 67%, 70% 47%, 83% 100%);
+  }
+
+  &::after {
+    inset: auto 5px 0 0;
+    height: 5px;
+    border: 1px solid #c7d4cd;
+    border-radius: 5px;
+    background: #fffaf1;
   }
 }
 
