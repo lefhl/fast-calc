@@ -240,20 +240,45 @@ const isDialogOpen = ref(false)
   border: 1px solid #a8c0b0;
   color: #173c34;
 
-  &::before {
+  overflow: visible;
+  outline: 1px solid #789889;
+  outline-offset: 6px;
+
+  &::before,
+  &::after {
     content: '';
     position: absolute;
-    inset: 3px;
-    border: 1px solid #b9ccc0;
-    border-radius: 11px;
+    inset: -10px;
+    border-radius: 23px;
     background:
-      radial-gradient(circle at 6px 1px, #cb904c 1.5px, transparent 2px) 3px 0 / 21px 4px repeat-x,
-      radial-gradient(circle at 14px 3px, #668b75 1.5px, transparent 2px) 3px 100% / 21px 4px
-        repeat-x,
-      radial-gradient(circle at 1px 6px, #668b75 1.5px, transparent 2px) 0 3px / 4px 21px repeat-y,
-      radial-gradient(circle at 3px 14px, #cb904c 1.5px, transparent 2px) 100% 3px / 4px 21px
-        repeat-y;
+      radial-gradient(circle at var(--bulb-position) 3px, var(--bulb-color) 2px, transparent 3px) 0
+        0 / 28px 6px repeat-x,
+      radial-gradient(circle at var(--bulb-position) 3px, var(--bulb-color) 2px, transparent 3px) 0
+        100% / 28px 6px repeat-x,
+      radial-gradient(circle at 3px var(--bulb-position), var(--bulb-color) 2px, transparent 3px) 0
+        0 / 6px 28px repeat-y,
+      radial-gradient(circle at 3px var(--bulb-position), var(--bulb-color) 2px, transparent 3px)
+        100% 0 / 6px 28px repeat-y;
+    animation: winter-dialog-lights 2.8s ease-in-out infinite;
     pointer-events: none;
+  }
+
+  &::before {
+    --bulb-position: 7px;
+    --bulb-color: #f4bf70;
+  }
+
+  &::after {
+    --bulb-position: 21px;
+    --bulb-color: #a9dcba;
+    animation-delay: -1.4s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before,
+    &::after {
+      animation: none;
+    }
   }
 
   .el-dialog__title,
@@ -292,6 +317,16 @@ const isDialogOpen = ref(false)
 
   @media (max-width: 480px) {
     --el-dialog-padding-primary: 16px;
+  }
+}
+@keyframes winter-dialog-lights {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.28;
   }
 }
 </style>
