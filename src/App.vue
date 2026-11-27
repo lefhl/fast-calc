@@ -1,12 +1,11 @@
 <template>
   <div class="container app-shell" :class="{ 'app-shell--basket': showMobileBasket }">
+    <div class="snow-background" aria-hidden="true">
+      <span v-for="(position, index) in snowflakes" :key="index" :style="position">❄</span>
+    </div>
     <AppHeader />
     <div class="winter-lights" aria-hidden="true"></div>
-    <div
-      v-if="isCatalog"
-      class="winter-banner"
-      :style="bannerStyle"
-    >
+    <div v-if="isCatalog" class="winter-banner" :style="bannerStyle">
       <p class="winter-deadline">Приём заказов до 12:00 понедельника</p>
       <span class="tofu-ornament" aria-hidden="true"></span>
     </div>
@@ -32,6 +31,15 @@ const { totalItemsCount, totalSum, totalComission } = storeToRefs(useGoodsStore(
 const isCatalog = computed(() => route.name === 'Mallakto' || route.name === 'Hood')
 const showMobileBasket = computed(() => isCatalog.value && totalItemsCount.value > 0)
 
+const snowflakes = [
+  { left: '2%', top: '16%', fontSize: '28px' },
+  { right: '3%', top: '25%', fontSize: '19px' },
+  { left: '5%', top: '44%', fontSize: '16px' },
+  { right: '5%', top: '56%', fontSize: '30px' },
+  { left: '2%', bottom: '17%', fontSize: '23px' },
+  { right: '2%', bottom: '8%', fontSize: '16px' },
+]
+
 const bannerStyle = {
   backgroundImage: `url(${import.meta.env.BASE_URL}images/winter-canal.webp)`,
 }
@@ -39,7 +47,22 @@ const bannerStyle = {
 
 <style lang="scss" scoped>
 .app-shell {
+  isolation: isolate;
   padding-block: 20px 56px;
+}
+
+.snow-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  color: #bacfc4;
+  opacity: 0.6;
+  pointer-events: none;
+
+  span {
+    position: absolute;
+    line-height: 1;
+  }
 }
 
 .winter-lights {
@@ -47,10 +70,8 @@ const bannerStyle = {
   margin-top: -14px;
   margin-bottom: 2px;
   background:
-    radial-gradient(ellipse 3px 4px at 12px 6px, #c98c47 95%, transparent)
-      0 0 / 48px 12px repeat-x,
-    radial-gradient(ellipse 3px 4px at 36px 6px, #688875 95%, transparent)
-      0 0 / 48px 12px repeat-x,
+    radial-gradient(ellipse 3px 4px at 12px 6px, #c98c47 95%, transparent) 0 0 / 48px 12px repeat-x,
+    radial-gradient(ellipse 3px 4px at 36px 6px, #688875 95%, transparent) 0 0 / 48px 12px repeat-x,
     linear-gradient(#365d50, #365d50) 0 2px / 100% 1px no-repeat;
 }
 
@@ -90,9 +111,10 @@ const bannerStyle = {
   background:
     radial-gradient(circle at 32% 30%, #bd9e72 1px, transparent 1.5px),
     radial-gradient(circle at 57% 59%, #bd9e72 1px, transparent 1.5px),
-    radial-gradient(circle at 22% 73%, #bd9e72 1px, transparent 1.5px),
-    #f2dfb7;
-  box-shadow: inset -5px -4px #d2b689, 0 2px 5px #173c3466;
+    radial-gradient(circle at 22% 73%, #bd9e72 1px, transparent 1.5px), #f2dfb7;
+  box-shadow:
+    inset -5px -4px #d2b689,
+    0 2px 5px #173c3466;
 
   &::before {
     content: '';
