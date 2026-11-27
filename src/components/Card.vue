@@ -105,6 +105,10 @@ const isDialogOpen = ref(false)
 }
 
 .card {
+  padding: 14px;
+  border: 1px solid #dce7e0;
+  border-radius: 12px;
+  background: #fff;
   display: flex;
   flex-direction: column;
 }

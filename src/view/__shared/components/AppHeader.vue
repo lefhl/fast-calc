@@ -1,103 +1,66 @@
 <template>
   <header class="header">
-    <div class="container">
-      <div class="header__content">
-        <div class="df aic g-12">
-          <router-link
-            v-for="link in links"
-            :key="link.route"
-            custom
-            :to="{ name: link.route }"
-            v-slot="{ navigate, isActive }"
-          >
-            <el-link :href="null" :type="isActive ? 'primary' : 'Default'" @click="navigate">{{
-              link.title
-            }}</el-link>
-          </router-link>
-        </div>
-
-        <router-link custom :to="{ name: 'Main' }" v-slot="{ navigate, isActive }">
-          <el-link v-if="!isActive" class="header__basket" @click="navigate">
-            <el-icon :size="20"><ShoppingCart /></el-icon>
-            <span class="header__items-count">{{ moreoverHundredVal }}</span>
-          </el-link>
-        </router-link>
-      </div>
-    </div>
+    <router-link class="brand" :to="{ name: 'Main' }">Соевый проспект</router-link>
+    <nav class="navigation" aria-label="Разделы закупки">
+      <router-link :to="{ name: 'Mallakto' }">Mallakto</router-link>
+      <router-link :to="{ name: 'Hood' }">HOOD</router-link>
+      <router-link :to="{ name: 'Main' }">
+        Корзина<span v-if="totalItemsCount"> · {{ totalItemsCount }}</span>
+      </router-link>
+      <router-link :to="{ name: 'Faq' }">FAQ</router-link>
+    </nav>
   </header>
 </template>
 
 <script lang="ts" setup>
 import { useGoodsStore } from '@/stores/useGoodsStore'
-import { ShoppingCart } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
 
 const { totalItemsCount } = storeToRefs(useGoodsStore())
-
-const moreoverHundredVal = computed(() => {
-  if (totalItemsCount.value > 99) return '99+'
-  return totalItemsCount.value
-})
-
-const links = [
-  {
-    route: 'Mallakto',
-    title: 'Mallakto (Сэйсей)',
-  },
-  {
-    route: 'Hood',
-    title: 'Hood',
-  },
-  {
-    route: 'Faq',
-    title: 'FAQ',
-  },
-]
 </script>
 
 <style lang="scss" scoped>
 .header {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 20px;
+}
 
-  &__content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding: 20px 16px;
-    background-color: #f5f7fa;
-    border-radius: 0 0 4px 4px;
-  }
+.brand {
+  color: #173c34;
+  font-size: clamp(21px, 3vw, 28px);
+  font-weight: 700;
+}
 
-  &__basket {
-    position: relative;
-  }
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
 
-  &__items-count {
-    position: absolute;
-    right: -12px;
-    top: -12px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    font-size: 10px;
-    color: #fff;
-    background-color: #409eff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-    font-weight: bold;
-  }
+.navigation a {
+  padding: 8px 11px;
+  border-radius: 8px;
+  color: #173c34;
+  font-weight: 600;
+}
 
-  @include media('md') {
-    background-color: #f5f7fa;
+.navigation a:hover {
+  background: #e1ebe5;
+}
+
+.navigation a.router-link-exact-active {
+  background: #173c34;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .navigation a {
+    padding-inline: 8px;
+    font-size: 14px;
   }
 }
 </style>
