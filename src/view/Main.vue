@@ -152,17 +152,19 @@ const copyOrder = () => {
     text += `${text ? '\n\n' : ''}Заказ по Mallakto:\n`
     text += mallakto.map((el) => `${el.title} ${el.count}`).join('\n')
   }
-  copyTextToClipboard(text)
+  copyTextToClipboard(text, !window.matchMedia('(max-width: 600px)').matches)
 }
 
 const clearOrder = () => {
   basket.value.all.forEach((el) => (el.count = 0))
 }
 
-async function copyTextToClipboard(text: string) {
+async function copyTextToClipboard(text: string, showSuccessNotification = true) {
   try {
     await navigator.clipboard.writeText(text)
-    ElNotification(SUCCESS_COPY_MESSAGE)
+    if (showSuccessNotification) {
+      ElNotification(SUCCESS_COPY_MESSAGE)
+    }
   } catch {
     ElNotification(FAIL_COPY_MESSAGE)
   }
