@@ -70,6 +70,7 @@ const bannerStyle = {
 }
 
 .winter-lights {
+  position: relative;
   height: 12px;
   margin-top: -14px;
   margin-bottom: 2px;
@@ -77,6 +78,42 @@ const bannerStyle = {
     radial-gradient(ellipse 3px 4px at 12px 6px, #c98c47 95%, transparent) 0 0 / 48px 12px repeat-x,
     radial-gradient(ellipse 3px 4px at 36px 6px, #688875 95%, transparent) 0 0 / 48px 12px repeat-x,
     linear-gradient(#365d50, #365d50) 0 2px / 100% 1px no-repeat;
+
+  @media (prefers-reduced-motion: no-preference) {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 3px 4px at var(--bulb-x) 6px, var(--lit-color) 95%, transparent)
+        0 0 / 48px 12px repeat-x;
+      animation: winter-lights-glow 6s ease-in-out infinite backwards;
+    }
+
+    &::before {
+      --bulb-x: 36px;
+      --lit-color: #87cc9c;
+    }
+
+    &::after {
+      --bulb-x: 12px;
+      --lit-color: #ffcb73;
+      animation-delay: 3s;
+    }
+  }
+}
+
+@keyframes winter-lights-glow {
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
 }
 
 .winter-announcement {
