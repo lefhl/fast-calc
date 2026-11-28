@@ -117,6 +117,7 @@ const bannerStyle = {
 }
 
 .winter-announcement {
+  --ornament-left: clamp(18px, 5vw, 64px);
   position: relative;
   margin-bottom: 24px;
 }
@@ -132,9 +133,10 @@ const bannerStyle = {
 .winter-deadline {
   position: absolute;
   top: 50%;
-  left: clamp(12px, 3vw, 32px);
+  left: calc(var(--ornament-left) + 52px);
+  right: 16px;
+  width: fit-content;
   transform: translateY(-50%);
-  max-width: calc(100% - 48px);
   padding: 8px 12px;
   border-radius: 8px;
   background: #173c34;
@@ -150,7 +152,7 @@ const bannerStyle = {
 .tofu-ornament {
   position: absolute;
   top: 28px;
-  right: clamp(18px, 5vw, 64px);
+  left: var(--ornament-left);
   width: 27px;
   height: 27px;
   border-radius: 4px;
@@ -201,7 +203,7 @@ const bannerStyle = {
   .winter-deadline {
     position: static;
     transform: none;
-    max-width: none;
+    width: auto;
     margin-top: 8px;
     padding: 4px 0;
     background: transparent;
