@@ -157,9 +157,11 @@ const bannerStyle = {
   background:
     radial-gradient(circle at 32% 30%, #bd9e72 1px, transparent 1.5px),
     radial-gradient(circle at 57% 59%, #bd9e72 1px, transparent 1.5px),
-    radial-gradient(circle at 22% 73%, #bd9e72 1px, transparent 1.5px), #f2dfb7;
+    radial-gradient(circle at 22% 73%, #bd9e72 1px, transparent 1.5px), #f8e6bd;
   box-shadow:
     inset -5px -4px #d2b689,
+    0 0 9px #ffd48b99,
+    0 0 23px 5px #f2ab5059,
     0 2px 5px #173c3466;
 
   &::before {
