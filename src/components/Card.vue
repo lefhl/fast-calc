@@ -91,10 +91,15 @@ const isDialogOpen = ref(false)
 
 <style lang="scss" scoped>
 .img-wrapper {
+  position: relative;
   height: 200px;
+  padding: 8px 24px;
+  border-radius: 8px;
+  background: #edf4ef;
 
   img {
     object-fit: contain;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
   }
@@ -127,35 +132,18 @@ const isDialogOpen = ref(false)
 }
 
 .photo-snowflake {
-  display: none;
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  display: block;
+  color: #668b75;
+  font-size: 14px;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .quantity-control {
   position: relative;
-}
-
-@media (max-width: 600px) {
-  .img-wrapper {
-    position: relative;
-    padding: 8px 24px;
-    border-radius: 8px;
-    background: #edf4ef;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .photo-snowflake {
-    position: absolute;
-    top: 8px;
-    right: 6px;
-    display: block;
-    color: #668b75;
-    font-size: 14px;
-    line-height: 1;
-    pointer-events: none;
-  }
 }
 
 .santa-hat {
