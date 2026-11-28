@@ -1,1 +1,0 @@
-import{b as e,bt as t,f as n,st as r,z as i}from"./_plugin-vue_export-helper-2QT74eyY.js";import{n as a}from"./index-Bb40Kjmg.js";import{t as o}from"./BuyPageContent-DqZVRVle.js";var s=e({__name:`Mallakto`,setup(e){let{mallaktoGoods:s}=a();return(e,a)=>(i(),n(o,{goods:t(s),"onUpdate:goods":a[0]||=e=>r(s)?s.value=e:null},null,8,[`goods`]))}});export{s as default};
